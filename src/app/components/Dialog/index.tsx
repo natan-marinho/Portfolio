@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { 
     Root, 
     Trigger, 
-    Portal,  // Adicione esta importação
+    Portal,
     Content, 
     Title, 
     Description, 
@@ -24,14 +24,30 @@ import {
     GitHubButton
 } from './style';
 
-export const ProjectModal = ({ children, title, description, images, tags, githubUrl }) => {
-  const [currentImage, setCurrentImage] = useState(0);
+interface ProjectModalProps {
+  children: ReactNode;
+  title: string;
+  description: string;
+  images: string[];
+  tags: string[];
+  githubUrl?: string;
+}
 
-  const nextImage = () => {
+export const ProjectModal = ({ 
+  children, 
+  title, 
+  description, 
+  images, 
+  tags, 
+  githubUrl 
+}: ProjectModalProps) => {
+  const [currentImage, setCurrentImage] = useState<number>(0);
+
+  const nextImage = (): void => {
     setCurrentImage((prev) => (prev + 1) % images.length);
   };
 
-  const previousImage = () => {
+  const previousImage = (): void => {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
 
@@ -41,7 +57,7 @@ export const ProjectModal = ({ children, title, description, images, tags, githu
         {children}
       </Trigger>
 
-      <Portal> {/* Adicione o Portal aqui */}
+      <Portal>
         <Content>
           <ModalOverlay>
             <ModalContent>

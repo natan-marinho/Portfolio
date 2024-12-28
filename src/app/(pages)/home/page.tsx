@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
-import { ProjectModal } from '../../components/Dialog';
+import { ProjectModal } from "../../components/Dialog";
 import { 
     BackgroundGradient, 
     Container, 
@@ -61,26 +61,29 @@ export const Portfolio = () => {
             {projects.map((project, index) => (
               <ProjectModal 
                 key={index} 
-                {...project}
-                children={
-                  <ProjectCard>
-                    <ProjectImage src={project.images[0]} alt={project.title} />
-                    <ProjectContent>
-                      <ProjectTitle>{project.title}</ProjectTitle>
-                      <ProjectDescription>{project.description}</ProjectDescription>
-                      <TagsContainer>
-                        {project.tags.map((tag, tagIndex) => (
-                          <Tag key={tagIndex}>{tag}</Tag>
-                        ))}
-                      </TagsContainer>
-                      <ViewProjectButton>
-                        Ver projeto
-                        <ArrowRight size={16} />
-                      </ViewProjectButton>
-                    </ProjectContent>
-                  </ProjectCard>
-                }
-              />
+                title={project.title}
+                description={project.description}
+                images={project.images}
+                tags={project.tags}
+                githubUrl={project.githubUrl}
+              >
+                <ProjectCard>
+                  <ProjectImage src={project.images[0]} alt={project.title} />
+                  <ProjectContent>
+                    <ProjectTitle>{project.title}</ProjectTitle>
+                    <ProjectDescription>{project.description}</ProjectDescription>
+                    <TagsContainer>
+                      {project.tags.map((tag, tagIndex) => (
+                        <Tag key={tagIndex}>{tag}</Tag>
+                      ))}
+                    </TagsContainer>
+                    <ViewProjectButton>
+                      Ver projeto
+                      <ArrowRight size={16} />
+                    </ViewProjectButton>
+                  </ProjectContent>
+                </ProjectCard>
+              </ProjectModal>
             ))}
           </ProjectsGrid>
         </Container>
