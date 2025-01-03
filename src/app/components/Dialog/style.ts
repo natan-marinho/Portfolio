@@ -63,7 +63,7 @@ export const CloseButton = styled.button`
 export const ModalImage = styled.img`
   width: 100%;
   height: auto;
-  object-fit: scale-down;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1.5rem;
   border: 1px solid ${theme.colors.modal.border};
