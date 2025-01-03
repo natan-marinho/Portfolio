@@ -92,7 +92,7 @@ export const ProjectModal = ({
                 )}
               </ImageContainer>
               
-              <Description style={{ color: '#666', lineHeight: '1.6' }}>
+              <Description style={{ color: '#666', lineHeight: '1.6', textAlign: 'justify' }}>
                 {description}
               </Description>
 
